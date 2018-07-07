@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>UFABC Hub</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<!--  LOGO -->
+			<div class="navbar-header">
+				<a href="" class="navbar-brand">UFABC Hub</a>
+			</div>
+
+			<!-- Items -->
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="signup">Cadastro</a></li>
+					<li><a href="login">Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+
+	<div class="container">
+		<div id="listStudents">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>RA</th>
+						<th>Nome</th>
+						<th>Curso</th>
+					</tr>
+				</thead>
+				<tr th:each="student : ${students}">
+					<td><span th:text="${student.ra}"></span></td>
+					<td><span th:text="${student.name}"></span></td>
+					<td><span th:text="${student.program}"></span></td>
+				</tr>
+
+			</table>
+		</div>
+		
+	</div>
+</body>
+</html>
