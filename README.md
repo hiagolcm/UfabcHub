@@ -8,7 +8,7 @@ Para executar o projeto:
 
 3) Adicione no arquivo as seguintes configurações:
 
-=======================================================================
+
 spring.jpa.show-sql=true
 
 spring.jpa.hibernate.ddl-auto=update
@@ -22,7 +22,7 @@ spring.datasource.username=<usuario>
 spring.datasource.password=<senha>
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
-========================================================================
+
 
 4) Rode o projeto com o comando: gradle bootRun
 
