@@ -15,11 +15,11 @@ spring.jpa.hibernate.ddl-auto=update
 
 spring.datasource.driverClassName=org.postgresql.Driver
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/<database>
+spring.datasource.url=jdbc:postgresql://localhost:5432/seubancodedados
 
-spring.datasource.username=<usuario>
+spring.datasource.username=usuario
 
-spring.datasource.password=<senha>
+spring.datasource.password=senha
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 
