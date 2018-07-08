@@ -1,5 +1,9 @@
 package br.com.ufabchub.service;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +24,30 @@ public class StudentService {
 		
 		Iterable<Student> students = studentRepository.findAll();
 		return students;
+	}
+	
+	public void authenticate(String email, String password, HttpSession session) {
 		
-
+		Student student;
+		List<Student> students = studentRepository.findByEmailPassword(email, password);
+		if(students.size()>0) {
+			student = students.get(0);
+		}else {
+			student = null;
+		}
 		
+		if (!student.equals(null)) {
+			session.setAttribute("loginstatus","LOGGED");
+			session.setAttribute("student", student);
+		}else {
+			session.setAttribute("loginstatus","NOT_LOGGED");
+		}
+		
+		
+	}
+	
+	public void logout(HttpSession session) {
+		session.setAttribute("loginstatus","NOT_LOGGED");
+		session.setAttribute("student", null);
 	}
 }
