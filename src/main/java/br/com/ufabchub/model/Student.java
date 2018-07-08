@@ -23,16 +23,24 @@ public class Student {
 	@Column(length=250, nullable=false)
 	private String program;
 	
+	@Column(length=250, nullable=false)
+	private String email;
+	
+	@Column(length=250,nullable=false)
+	private String password;
+	
 	Student(){
 		
 	}
 
-	public Student(String ra, String name, int age, String program) {
+	public Student(String ra, String name, int age, String program,String email, String password) {
 		super();
 		this.ra = ra;
 		this.name = name;
 		this.age = age;
 		this.program = program;
+		this.email = email;
+		this.password = password;
 	}
 
 	public Long getId() {
@@ -73,6 +81,22 @@ public class Student {
 
 	public void setProgram(String program) {
 		this.program = program;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}	
 	
 	

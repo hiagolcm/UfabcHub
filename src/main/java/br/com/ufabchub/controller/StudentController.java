@@ -35,12 +35,18 @@ public class StudentController {
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(@RequestParam("ra") String ra, @RequestParam("name") String name, @RequestParam("age") int age,
-			@RequestParam("program") String program, Model model) {
-		
-		studentService.save(new Student(ra,name,age,program));
+			@RequestParam("program") String program, @RequestParam("email") String email,
+			@RequestParam("password") String password, Model model) {
+
+		studentService.save(new Student(ra, name, age, program, email, password));
 		Iterable<Student> students = studentService.listAll();
-		model.addAttribute("students",students);
+		model.addAttribute("students", students);
 		return "liststudents";
+	}
+
+	@RequestMapping("login")
+	public String index() {
+		return "login";
 	}
 
 }
