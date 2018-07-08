@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages="br.com.ufabchub.controller")
-@EntityScan(basePackages="br.com.ufabchub.model")
-@EnableJpaRepositories(basePackages="br.com.ufabchub.repository")
+@ComponentScan(basePackages = { "br.com.ufabchub.controller", "br.com.ufabchub.service" })
+@EntityScan(basePackages = "br.com.ufabchub.model")
+@EnableJpaRepositories(basePackages = "br.com.ufabchub.repository")
 public class UfabcHubApplication {
 
 	public static void main(String[] args) {
