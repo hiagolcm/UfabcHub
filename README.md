@@ -7,13 +7,22 @@ Para executar o projeto:
 2) Crie um arquivo chamado application.properties no diretorio: src/main/resources/
 
 3) Adicione no arquivo as seguintes configurações:
+
+=======================================================================
 spring.jpa.show-sql=true
+
 spring.jpa.hibernate.ddl-auto=update
+
 spring.datasource.driverClassName=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://localhost:5432/ufabchub
-spring.datasource.username=postgres
-spring.datasource.password=123
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/<database>
+
+spring.datasource.username=<usuario>
+
+spring.datasource.password=<senha>
+
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+========================================================================
 
 4) Rode o projeto com o comando: gradle bootRun
 
