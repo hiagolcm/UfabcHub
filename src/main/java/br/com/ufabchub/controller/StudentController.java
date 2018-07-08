@@ -22,7 +22,7 @@ public class StudentController {
 
 	@RequestMapping("signup")
 	public String signup() {
-
+		//Abre pagina para cadastro
 		return "signup";
 	}
 
@@ -30,7 +30,9 @@ public class StudentController {
 	public String save(@RequestParam("ra") String ra, @RequestParam("name") String name, @RequestParam("age") int age,
 			@RequestParam("program") String program, @RequestParam("email") String email,
 			@RequestParam("password") String password, Model model) {
-
+		
+		//Salva um novo estudante no banco de dados e redireciona para a pagina de login
+		
 		studentService.save(new Student(ra, name, age, program, email, password));
 
 		return "redirect:/login";
@@ -38,13 +40,14 @@ public class StudentController {
 
 	@RequestMapping("login")
 	public String index() {
+		//Abre a pagina de login
 		return "login";
 	}
 
 	@RequestMapping("authenticate")
 	public String authenticate(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession session) {
-
+		//Verifica se o email e senha existe. Se existir o login do usuario é efetuado
 		studentService.authenticate(email, password, session);
 
 		return "redirect:/";
@@ -52,7 +55,8 @@ public class StudentController {
 
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
-
+		
+		//Faz o logout do usuario
 		studentService.logout(session);
 
 		return "redirect:/";

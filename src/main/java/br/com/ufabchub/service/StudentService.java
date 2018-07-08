@@ -17,17 +17,20 @@ public class StudentService {
 	private StudentRepository studentRepository;
 	
 	public void save(Student student) {
+		//Salva student no banco de dados
 		studentRepository.save(student);
 	}
 	
 	public Iterable<Student> listAll() {
-		
+		//retorna lista de students cadastros
 		Iterable<Student> students = studentRepository.findAll();
 		return students;
 	}
 	
 	public void authenticate(String email, String password, HttpSession session) {
+		//Faz o login do usuario
 		
+		//Verifica se existe studente com o mesmo email e senha
 		Student student;
 		List<Student> students = studentRepository.findByEmailPassword(email, password);
 		if(students.size()>0) {
@@ -36,6 +39,7 @@ public class StudentService {
 			student = null;
 		}
 		
+		//Atribui valores na session
 		if (!student.equals(null)) {
 			session.setAttribute("loginstatus","LOGGED");
 			session.setAttribute("student", student);
@@ -47,6 +51,7 @@ public class StudentService {
 	}
 	
 	public void logout(HttpSession session) {
+		//Realiza o logout do usuario
 		session.setAttribute("loginstatus","NOT_LOGGED");
 		session.setAttribute("student", null);
 	}
