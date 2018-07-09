@@ -30,6 +30,9 @@ public class Student {
 	@Column(length=250,nullable=false)
 	private String password;
 	
+	@Column(length=250,nullable=true)
+	private String classroomId;
+	
 	Student(){
 		
 	}
