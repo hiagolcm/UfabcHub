@@ -32,7 +32,7 @@ public class Student {
 	
 	@Column(length=250,nullable=true)
 	private String classroomId;
-	
+
 	Student(){
 		
 	}
@@ -47,6 +47,14 @@ public class Student {
 		this.password = password;
 	}
 
+	public String getClassroomId() {
+		return classroomId;
+	}
+
+	public void setClassroomId(String classroomId) {
+		this.classroomId = classroomId;
+	}
+	
 	public Long getId() {
 		return id;
 	}
