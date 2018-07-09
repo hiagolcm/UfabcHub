@@ -10,11 +10,32 @@
 		<meta name="viewport" content="width=device-width" />
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
 		<link rel="stylesheet" type="text/css" href="custom.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Peço perdão migos, mas taquei o javascript aqui mesmo -->
+		<script>
+			$(function(){
+					$("#tabela input").keyup(function(){
+						var index = $(this).parent().index();
+						var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+						var valor = $(this).val().toUpperCase();		
+					$("#tabela tbody tr").show();
+					$(nth).each(function(){
+						if($(this).text().toUpperCase().indexOf(valor) <0){
+							$(this).parent().hide();
+						}
+					});
+				});
+				$("#tabela input").blur(function(){
+					$(this).val("");
+				});
+			});		
+		</script>
 	</head>
 	
 	<body>
 	
+	<!-- CABEÇALHO DA PAGE -->
 	<nav class="navbar navbar-default">
 			<div class="container-fluid">
 			
@@ -36,14 +57,25 @@
 			</div>
 		</nav>
 		
+		<div>
+			<h2>Escolha as suas Turmas:</h2>
+		</div>
+		
+		
 		<nav class="navbar navbar-default">
-			<table class="table table-sm table-striped table-hover table-bordered">
+			<table class="table table-sm table-striped table-hover table-bordered" id="tabela">
 				<thead>
-						<tr>
-							<th>Campus</th>
-							<th>Nome</th>
-							<th>Está nessa sala?</th>
-						</tr>
+					<tr>
+						<th>Campus</th>
+						<th>Nome</th>
+						<th>Está nessa sala?</th>
+					</tr>
+						
+					<tr>
+						<th><input type="text" id="txtColuna1"/></th>
+						<th><input type="text" id="txtColuna2"/></th>
+					</tr>
+						
 				</thead>
 				<tbody>
 					<tr th:each="classroom : ${classrooms}">
