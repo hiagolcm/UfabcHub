@@ -18,6 +18,7 @@ public class Student {
 	@Column(length=250, nullable=false)
 	private String name;
 	
+	//mudar isso aqui depois
 	private int age;
 	
 	@Column(length=250, nullable=false)
