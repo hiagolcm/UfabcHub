@@ -1,37 +1,53 @@
 package br.com.ufabchub.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Classroom {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String name;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String campus;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String period;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String scheduleClass;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String scheduleLab;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String professorClass;
-	
-	@Column(length=250, nullable=false)
+
+	@Column(length = 250, nullable = false)
 	private String professorLab;
+
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "classrooms", cascade = CascadeType.ALL)
+	private List<Student> students;
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 
 	public Long getId() {
 		return id;

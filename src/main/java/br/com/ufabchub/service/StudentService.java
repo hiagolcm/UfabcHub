@@ -1,6 +1,7 @@
 package br.com.ufabchub.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -54,5 +55,9 @@ public class StudentService {
 		//Realiza o logout do usuario
 		session.setAttribute("loginstatus","NOT_LOGGED");
 		session.setAttribute("student", null);
+	}
+	
+	public Student findById(Long id) {
+		return studentRepository.findById(id).get();
 	}
 }
