@@ -25,12 +25,6 @@ public class StudentController {
 		//Abre pagina para cadastro
 		return "signup";
 	}
-	
-	@RequestMapping("home")
-	public String home() {
-		//Volta para home
-		return "redirect:/";
-	}
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(@RequestParam("ra") String ra, @RequestParam("name") String name, @RequestParam("age") int age,
