@@ -6,26 +6,7 @@
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-			
-				<!--  LOGO -->
-				<div class="navbar-header">
-					<a href="home" class="navbar-brand">UFABC Hub</a>
-				</div>
-				
-				<!-- Items -->
-				<div>
-					<ul class="nav navbar-nav">
-						<li><a href="signup">Cadastro</a></li>
-						<li><a href="login">Login</a></li>
-					</ul>
-					
-				</div>
-				
-				
-			</div>
-		</nav>
+		<header th:replace="notlogged :: header-fragment"></header>
 		<div class="container" >
 			<div class="jumbotron" align="center" style="margin-top: 50px;">
 				<h1>Bem vindo ao UFABC Hub</h1>
