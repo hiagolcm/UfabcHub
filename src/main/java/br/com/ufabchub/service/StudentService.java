@@ -43,7 +43,7 @@ public class StudentService {
 		//Atribui valores na session
 		if (!student.equals(null)) {
 			session.setAttribute("loginstatus","LOGGED");
-			session.setAttribute("student", student);
+			session.setAttribute("studentid", student.getId());
 		}else {
 			session.setAttribute("loginstatus","NOT_LOGGED");
 		}

@@ -1,9 +1,5 @@
 package br.com.ufabchub.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.ufabchub.model.Classroom;
 import br.com.ufabchub.model.Student;
 import br.com.ufabchub.service.ClassroomService;
 import br.com.ufabchub.service.StudentService;
@@ -33,8 +28,7 @@ public class ClassroomController {
 		ModelAndView mv = new ModelAndView("classroom");
 
 		// envia a lista de turmas para a view
-		mv.addObject("classrooms",
-				(studentService.findById(((Student) session.getAttribute("student")).getId())).getClassrooms());
+		mv.addObject("classrooms", (studentService.findById((Long) session.getAttribute("studentid"))).getClassrooms());
 		return mv;
 	}
 
@@ -45,8 +39,9 @@ public class ClassroomController {
 		ModelAndView mv = new ModelAndView("removeclassroom");
 
 		// envia a lista de turmas para a view
+		Long studentId = (Long) session.getAttribute("studentid");
 		mv.addObject("classrooms",
-				(studentService.findById(((Student) session.getAttribute("student")).getId())).getClassrooms());
+				studentService.findById((studentId)).getClassrooms());
 		return mv;
 	}
 
@@ -62,7 +57,7 @@ public class ClassroomController {
 	public String remove(@RequestParam("classroomId") String classroomId, HttpSession session) {
 		// remove uma turma para o aluno
 
-		Long studentId = ((Student) session.getAttribute("student")).getId();
+		Long studentId = (Long) session.getAttribute("studentid");
 		Student student = studentService.findById(studentId);
 
 		student.getClassrooms().remove(classrs.getClassroomById(Long.parseLong(classroomId)));
@@ -76,7 +71,7 @@ public class ClassroomController {
 	public String register(@RequestParam("classroomId") String classroomId, HttpSession session) {
 		// registra uma turma para o aluno
 
-		Long studentId = ((Student) session.getAttribute("student")).getId();
+		Long studentId = (Long) session.getAttribute("studentid");
 		Student student = studentService.findById(studentId);
 
 		student.getClassrooms().add(classrs.getClassroomById(Long.parseLong(classroomId)));

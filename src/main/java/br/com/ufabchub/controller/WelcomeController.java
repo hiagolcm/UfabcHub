@@ -13,8 +13,8 @@ public class WelcomeController {
 		//Se o usuario estiver logado retorna para o timeliine
 		//Se o usuario não estiver logado, retorna para o index.html
 		
-		String loginStatus = (String) session.getAttribute("loginstatus");
-		if (loginStatus == "LOGGED") {
+		Long userId = (Long) session.getAttribute("studentid");
+		if (userId != null) {
 			return "timeline";
 		}
 		return "index";
