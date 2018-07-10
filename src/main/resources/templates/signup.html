@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
 	<header th:replace="notlogged :: header-fragment"></header>
 	<div class="container">
-		<form action="save" method="post">
+		<form action="/student/save" method="post">
 
 			<div class="form-group">
 				<label for="name">Nome:</label> <input class="form-control"
