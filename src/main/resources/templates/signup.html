@@ -3,29 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-
-			<!--  LOGO -->
-			<div class="navbar-header">
-				<a href="home" class="navbar-brand">UFABC Hub</a>
-			</div>
-
-			<!-- Items -->
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="signup">Cadastro</a></li>
-					<li><a href="login">Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<header th:replace="notlogged :: header-fragment"></header>
 	<div class="container">
-		<form action="save" method="post">
+		<form action="/student/save" method="post">
 
 			<div class="form-group">
 				<label for="name">Nome:</label> <input class="form-control"

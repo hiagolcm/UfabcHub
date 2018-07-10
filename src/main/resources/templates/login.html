@@ -3,20 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<link href="ufabchub/global.css" rel="stylesheet" />
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/ufabchub/global.css" rel="stylesheet" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 	<script src="bootstrap/js/bootstrap.min.js">
 </script>
 </head>
 <body>
-
+	<header th:replace="notlogged :: header-fragment"></header>
 	<div class="container-fluid bg">
 		<div class="col-md-4 col-xs-12"></div>
 		<div class="col-md-4 col-xs-12">
 			<!-- Formulario -->
-			<form class="form-container" action="authenticate" method="post">
+			<form class="form-container" action="/student/authenticate" method="post">
 				<h1>Ufabc Hub</h1>
 				<div class="form-group">
 					<label for="email">Email:</label> <input class="form-control"
@@ -27,7 +27,7 @@
 						type="password" id="password" name="password" placeholder="Senha" />
 				</div>
 				<button class="btn btn-success btn-lock" type="submit">Entrar</button>
-				<a href="home" class="btn btn-warning">Voltar</a> 
+				<a href="/home" class="btn btn-warning">Voltar</a> 
 			</form>
 			<!-- Formulario end -->
 		</div>

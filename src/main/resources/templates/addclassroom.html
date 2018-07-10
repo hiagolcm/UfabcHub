@@ -39,27 +39,7 @@
 
 <body>
 
-	<!-- CABEÇALHO DA PAGE -->
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-
-			<!--  LOGO -->
-			<div class="navbar-header">
-				<a href="home" class="navbar-brand">UFABC Hub</a>
-			</div>
-
-			<!-- Items -->
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="classroom">Turmas</a></li>
-					<li><a href="logout">Logout</a></li>
-				</ul>
-
-			</div>
-
-
-		</div>
-	</nav>
+	<header th:replace="logged :: header-fragment"></header>
 
 	<nav class="navbar navbar-default">
 		<div class="container">
@@ -94,8 +74,9 @@
 										<tr th:each="classroom : ${classrooms}">
 											<td th:text="${classroom.campus}"></td>
 											<td th:text="${classroom.name}"></td>
-											<td><button name="classroomId" class="btn btn-success" type="submit"
-													th:value="${classroom.id}">Cadastrar Turma</button>
+											<td><button name="classroomId" class="btn btn-success"
+													type="submit" th:value="${classroom.id}">Cadastrar
+													Turma</button>
 									</tbody>
 
 								</table>

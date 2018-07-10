@@ -3,34 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>UFABC Hub</title>
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-			
-				<!--  LOGO -->
-				<div class="navbar-header">
-					<a href="home" class="navbar-brand">UFABC Hub</a>
-				</div>
-				
-				<!-- Items -->
-				<div>
-					<ul class="nav navbar-nav">
-						<li><a href="signup">Cadastro</a></li>
-						<li><a href="login">Login</a></li>
-					</ul>
-					
-				</div>
-				
-				
-			</div>
-		</nav>
+		<header th:replace="notlogged :: header-fragment"></header>
 		<div class="container" >
 			<div class="jumbotron" align="center" style="margin-top: 50px;">
 				<h1>Bem vindo ao UFABC Hub</h1>
 				<div align="center">
-					<a href="signup" class="btn btn-lg btn-primary">Clique aqui para efetuar o cadastro</a>
+					<a href="/student/signup" class="btn btn-lg btn-primary">Clique aqui para efetuar o cadastro</a>
 				</div>
 			</div>
 		</div>

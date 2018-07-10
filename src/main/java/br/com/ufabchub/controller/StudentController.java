@@ -8,31 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import br.com.ufabchub.model.Student;
 import br.com.ufabchub.service.StudentService;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping("signup")
+	@RequestMapping(value ="/signup", method = RequestMethod.GET)
 	public String signup() {
 		//Abre pagina para cadastro
 		return "signup";
 	}
-	
-	@RequestMapping("home")
-	public String home() {
-		//Volta para home
-		return "redirect:/";
-	}
 
-	@RequestMapping(value = "save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@RequestParam("ra") String ra, @RequestParam("name") String name, @RequestParam("age") int age,
 			@RequestParam("program") String program, @RequestParam("email") String email,
 			@RequestParam("password") String password, Model model) {
@@ -41,16 +35,16 @@ public class StudentController {
 		
 		studentService.save(new Student(ra, name, age, program, email, password));
 
-		return "redirect:/login";
+		return "redirect:/student/login";
 	}
 
-	@RequestMapping("login")
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String index() {
 		//Abre a pagina de login
 		return "login";
 	}
 
-	@RequestMapping("authenticate")
+	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public String authenticate(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession session) {
 		//Verifica se o email e senha existe. Se existir o login do usuario é efetuado
@@ -59,7 +53,7 @@ public class StudentController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("logout")
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		
 		//Faz o logout do usuario
