@@ -45,6 +45,7 @@ public class Student {
 		this.program = program;
 		this.email = email;
 		this.password = password;
+		this.classroomId = ",";
 	}
 
 	public String getClassroomId() {

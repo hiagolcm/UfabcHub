@@ -31,38 +31,38 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>Turmas matriculadas</strong>
+					<strong>Escolha uma Turma para remover</strong>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table
-							class="table table-sm table-striped table-hover table-bordered">
-							<thead>
-								<tr>
-									<th>Campus</th>
-									<th>Turma</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="classroom : ${classrooms}">
-									<td th:text="${classroom.campus}"></td>
-									<td th:text="${classroom.name}"></td>
-									<td>
-										<div>
-											<a href="room" class="btn btn-success">Entrar</a>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<form action="remove" method="post">
+							<table
+								class="table table-sm table-striped table-hover table-bordered">
+								<thead>
+									<tr>
+										<th>Campus</th>
+										<th>Turma</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="classroom : ${classrooms}">
+										<td th:text="${classroom.campus}"></td>
+										<td th:text="${classroom.name}"></td>
+										<td>
+											<button name="classroomId" class="btn btn-danger"
+												type="submit" th:value="${classroom.id}">Remover</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
-			
+
 			<div>
-				<a href="addclassroom" class="btn btn-success">Adicionar Turma</a> <a
-					href="removeclassroom" class="btn btn-warning">Remover Turma</a>
+				<a href="classroom" class="btn btn-warning">Voltar</a>
 			</div>
 
 		</div>
