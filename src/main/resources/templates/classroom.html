@@ -4,6 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<link rel="stylesheet" type="text/css" href="custom.css">
+
 </head>
 <body>
 	<header th:replace="logged :: header-fragment"></header>
@@ -42,8 +50,8 @@
 			</div>
 			
 			<div>
-				<a href="addclassroom" class="btn btn-success">Adicionar Turma</a> <a
-					href="removeclassroom" class="btn btn-warning">Remover Turma</a>
+				<a href="/student/addclassroom" class="btn btn-success">Adicionar Turma</a> <a
+					href="/student/removeclassroom" class="btn btn-warning">Remover Turma</a>
 			</div>
 
 		</div>

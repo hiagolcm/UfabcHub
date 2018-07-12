@@ -50,7 +50,7 @@ public class StudentController {
 		//Verifica se o email e senha existe. Se existir o login do usuario é efetuado
 		studentService.authenticate(email, password, session);
 
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -59,7 +59,7 @@ public class StudentController {
 		//Faz o logout do usuario
 		studentService.logout(session);
 
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 }

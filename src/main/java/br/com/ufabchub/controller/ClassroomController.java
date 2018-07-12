@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +14,7 @@ import br.com.ufabchub.service.ClassroomService;
 import br.com.ufabchub.service.StudentService;
 
 @Controller
+@RequestMapping("/student")
 public class ClassroomController {
 
 	@Autowired
@@ -21,39 +23,41 @@ public class ClassroomController {
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping("classroom")
+	@RequestMapping(value = "/classroom", method = RequestMethod.GET)
 	public ModelAndView classroom(HttpSession session) {
 		// Abre pagina para as Turmas
 
-		ModelAndView mv = new ModelAndView("classroom");
+		ModelAndView mv = new ModelAndView("/classroom");
+		Long studentId = (Long) session.getAttribute("studentid");
+		Student student = studentService.findById(studentId);
 
 		// envia a lista de turmas para a view
-		mv.addObject("classrooms", (studentService.findById((Long) session.getAttribute("studentid"))).getClassrooms());
+		mv.addObject("classrooms", student.getClassrooms());
 		return mv;
 	}
 
-	@RequestMapping("removeclassroom")
+	@RequestMapping(value = "/removeclassroom", method = RequestMethod.GET)
 	public ModelAndView removeclassroom(HttpSession session) {
 		// Abre pagina para remover as Turmas
 
-		ModelAndView mv = new ModelAndView("removeclassroom");
+		ModelAndView mv = new ModelAndView("/removeclassroom");
+		Long studentId = (Long) session.getAttribute("studentid");
+		Student student = studentService.findById(studentId);
 
 		// envia a lista de turmas para a view
-		Long studentId = (Long) session.getAttribute("studentid");
-		mv.addObject("classrooms",
-				studentService.findById((studentId)).getClassrooms());
+		mv.addObject("classrooms", student.getClassrooms());
 		return mv;
 	}
 
-	@RequestMapping("addclassroom")
+	@RequestMapping(value = "/addclassroom", method = RequestMethod.GET)
 	public ModelAndView addclassroom() {
 		// Abre pagina para cadastro de Turmas e envia a lista de turmas para a pagina
-		ModelAndView mv = new ModelAndView("addclassroom");
+		ModelAndView mv = new ModelAndView("/addclassroom");
 		mv.addObject("classrooms", classrs.listAll());
 		return mv;
 	}
 
-	@RequestMapping("remove")
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@RequestParam("classroomId") String classroomId, HttpSession session) {
 		// remove uma turma para o aluno
 
@@ -64,10 +68,10 @@ public class ClassroomController {
 
 		studentService.save(student);
 
-		return "redirect:/classroom";
+		return "redirect:/student/classroom";
 	}
 
-	@RequestMapping("register")
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@RequestParam("classroomId") String classroomId, HttpSession session) {
 		// registra uma turma para o aluno
 
@@ -78,7 +82,7 @@ public class ClassroomController {
 
 		studentService.save(student);
 
-		return "redirect:/classroom";
+		return "redirect:/student/classroom";
 	}
 
 }
