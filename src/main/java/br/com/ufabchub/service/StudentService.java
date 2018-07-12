@@ -44,6 +44,7 @@ public class StudentService {
 		if (!student.equals(null)) {
 			session.setAttribute("loginstatus","LOGGED");
 			session.setAttribute("studentid", student.getId());
+			session.setAttribute("studentName", student.getName());
 		}else {
 			session.setAttribute("loginstatus","NOT_LOGGED");
 		}
@@ -54,7 +55,7 @@ public class StudentService {
 	public void logout(HttpSession session) {
 		//Realiza o logout do usuario
 		session.setAttribute("loginstatus","NOT_LOGGED");
-		session.setAttribute("student", null);
+		session.setAttribute("studentid", null);
 	}
 	
 	public Student findById(Long id) {
