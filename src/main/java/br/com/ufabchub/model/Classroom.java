@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Classroom {
@@ -40,6 +41,18 @@ public class Classroom {
 
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "classrooms", cascade = CascadeType.ALL)
 	private List<Student> students;
+	
+	@OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
+	private List<Publish> publishes;
+	
+
+	public List<Publish> getPublishes() {
+		return publishes;
+	}
+
+	public void setPublishes(List<Publish> publishes) {
+		this.publishes = publishes;
+	}
 
 	public List<Student> getStudents() {
 		return students;
