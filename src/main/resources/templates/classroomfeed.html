@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
@@ -20,7 +20,8 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>Turmas matriculadas</strong>
+					<tr th:each="classroom : ${classrooms}">
+						<strong th:text="${classrooms.name}"></strong>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -29,19 +30,20 @@
 								class="table table-sm table-striped table-hover table-bordered">
 								<thead>
 									<tr>
-										<th>Campus</th>
-										<th>Turma</th>
+										<th></th>
+										<th></th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="classroom : ${classrooms}">
-										<td th:text="${classroom.campus}"></td>
-										<td th:text="${classroom.name}"></td>
+									<tr th:each="post : ${posts}">
+										<td th:text="${posts.date}"></td>
+										<td th:text="${posts.body}"></td>
 										<td>
 											<div>
 												<button name="classroomId" class="btn btn-success"
-													type="submit" th:value="${classroom.id}">Entrar</button>
+													type="submit" th:value="${classroom.id}">Acessar
+													Post</button>
 											</div>
 										</td>
 									</tr>
@@ -53,9 +55,7 @@
 			</div>
 
 			<div>
-				<a href="/student/addclassroom" class="btn btn-success">Adicionar
-					Turma</a> <a href="/student/removeclassroom" class="btn btn-warning">Remover
-					Turma</a>
+				<a href="/student/classroom" class="btn btn-warning">Voltar</a>
 			</div>
 
 		</div>

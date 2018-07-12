@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,5 +85,18 @@ public class ClassroomController {
 
 		return "redirect:/student/classroom";
 	}
-
+	
+	@RequestMapping(value = "/enter", method = RequestMethod.POST)
+	public String enter(@RequestParam("classroomId") String classroomId, HttpSession session) {
+		String redirect = "redirect:/student/classroom/" + classroomId; 
+		return redirect;
+	}
+	
+	@RequestMapping(value = { "/classroom/{id}"} )
+	public ModelAndView lobyClassroom(@PathVariable Long id){
+		ModelAndView mv = new ModelAndView("classroomfeed");
+		mv.addObject("classrooms", classrs.getClassroomById(id));
+		return mv;
+	}
+	
 }
