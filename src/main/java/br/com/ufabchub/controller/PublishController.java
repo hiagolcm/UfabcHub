@@ -28,7 +28,6 @@ public class PublishController {
 	private StudentService studentService;
 
 	@RequestMapping(value = "/addpost", method = RequestMethod.POST)
-	public String addpost(@RequestParam("classroomId") String classroomId, @RequestParam("post") String postBody,
 	public String addpost(@RequestParam("classroomId") Long classroomId, @RequestParam("post") String postBody,
 			HttpSession session) {
 		Publish post = new Post(postBody, studentService.findById((Long) session.getAttribute("studentid")),
