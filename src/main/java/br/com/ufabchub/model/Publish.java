@@ -41,6 +41,7 @@ public abstract class Publish {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		this.date = formatter.format(now);
+		this.upVotes = 0;
 	}
 
 	public Student getStudent() {

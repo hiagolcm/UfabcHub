@@ -18,11 +18,12 @@
 	<div class="container">
 		<div class="jumbotron" align="center">
 
-			<div class="panel panel-default">
+			<div class="panel panel-default"> 
 				<div class="panel-heading">
 					<tr th:each="classroom : ${classrooms}">
 						<strong th:text="${classrooms.name}"></strong>
 				</div>
+
 				<div class="panel-body">
 					<div class="table-responsive">
 						<form action="enter" method="post">
@@ -36,9 +37,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="post : ${posts}">
-										<td th:text="${posts.date}"></td>
-										<td th:text="${posts.body}"></td>
+									<tr th:each="publish : ${posts}">
+										<td th:text="${publish.date}"></td>
+										<td th:text="${publish.body}"></td>
 										<td>
 											<div>
 												<button name="classroomId" class="btn btn-success"
@@ -52,10 +53,12 @@
 						</form>
 					</div>
 				</div>
+				
 			</div>
 
 			<div>
 				<a href="/student/classroom" class="btn btn-warning">Voltar</a>
+				<a href="/student/teste/classroom/addpost" class="btn btn-warning">Adicionar Publicação</a>
 			</div>
 
 		</div>

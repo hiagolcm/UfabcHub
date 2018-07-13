@@ -12,12 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ufabchub.model.Student;
 import br.com.ufabchub.service.ClassroomService;
+import br.com.ufabchub.service.PublishService;
 import br.com.ufabchub.service.StudentService;
 
 @Controller
 @RequestMapping("/student")
 public class ClassroomController {
 
+	@Autowired
+	private PublishService publishsr;
+	
 	@Autowired
 	private ClassroomService classrs;
 
@@ -96,6 +100,7 @@ public class ClassroomController {
 	public ModelAndView lobyClassroom(@PathVariable Long id){
 		ModelAndView mv = new ModelAndView("classroomfeed");
 		mv.addObject("classrooms", classrs.getClassroomById(id));
+		mv.addObject("posts",publishsr.listByClassroom(id));
 		return mv;
 	}
 	
