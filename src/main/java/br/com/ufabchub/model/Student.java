@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -43,7 +44,10 @@ public class Student {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "student_classroom", joinColumns = @JoinColumn(name = "sutendt_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"))
 	private List<Classroom> classrooms;
-
+	
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+	private List<Publish> publishes;
+	
 	public Student() {
 		
 	}
@@ -58,6 +62,15 @@ public class Student {
 		this.email = email;
 		this.password = password;
 		this.classrooms = null;
+	}
+
+	
+	public List<Publish> getPublishes() {
+		return publishes;
+	}
+
+	public void setPublishes(List<Publish> publishes) {
+		this.publishes = publishes;
 	}
 
 	public List<Classroom> getClassrooms() {
