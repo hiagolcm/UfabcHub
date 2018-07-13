@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>UFABC Hub</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<link rel="stylesheet" type="text/css" href="custom.css">
+
+</head>
+<body>
+
+	<header th:replace="logged :: header-fragment"></header>
+	
+	<div class="container">
+								<!-- Exibição do Post -->
+		<table
+			class="table table-sm table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="publish : ${publishes}">
+					<td><row th:text="${publish.student.name}"> </row><br/> 
+					<row th:text="${publish.date}"></row></td>
+					<td th:text="${publish.body}"></td>
+				</tr>
+			</tbody>						
+		</table>
+	</div>
+	
+	<div class="container">
+	
+	
+								<!-- Exibição dos Comentários -->
+	<table>
+	<thead>
+									<tr>
+										<th></th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="comment : ${comments}">
+										<td><row th:text="${comment.student.name}"> </row><br/> <row
+												th:text="${comment.date}"> </row></td>
+										<td th:text="${comment.body}"></td>
+									</tr>
+								</tbody>
+		</table> 
+		
+		
+							
+								<!-- Inserir novo Comentário -->
+		<div class="form-group">
+
+
+			<form action="addcomment" method="post">
+							<tr th:each="publish : ${publishes}">
+								<input class="form-control" type="text" id="comment" name="comment"
+									placeholder="Escreva aqui seu comentário:" required />
+								<button name="classroomId" class="btn btn-success" type="submit"
+									th:value="${publish.classroom.id}">Adicionar Comentário</button>
+							</tr>
+			</form>				
+		</div>
+	
+	</div>
+</body>
+</html>
