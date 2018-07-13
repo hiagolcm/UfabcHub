@@ -28,6 +28,9 @@ public class Student {
 	// mudar isso aqui depois
 	private int age;
 
+	@Column(length = 4, nullable = false)
+	private int entryYear;
+
 	@Column(length = 250, nullable = false)
 	private String program;
 
@@ -45,11 +48,12 @@ public class Student {
 		
 	}
 	
-	public Student(String ra, String name, int age, String program, String email, String password) {
+	public Student(String ra, String name, int age, int entryYear, String program, String email, String password) {
 		super();
 		this.ra = ra;
 		this.name = name;
 		this.age = age;
+		this.entryYear = entryYear;
 		this.program = program;
 		this.email = email;
 		this.password = password;
@@ -96,11 +100,19 @@ public class Student {
 		this.age = age;
 	}
 
-	public String getProgram() {
+	public int getEntryYear() {
+		return entryYear;
+	}
+
+	public void setEntryYear(int entryYear) {
+		this.entryYear = entryYear;
+	}
+	
+	public String getprogram() {
 		return program;
 	}
 
-	public void setProgram(String program) {
+	public void setprogram(String program) {
 		this.program = program;
 	}
 

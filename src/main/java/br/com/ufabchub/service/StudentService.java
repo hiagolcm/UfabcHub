@@ -61,4 +61,9 @@ public class StudentService {
 	public Student findById(Long id) {
 		return studentRepository.findById(id).get();
 	}
+	
+	public List<Student> match(int entryYear, String program)
+	{
+		return studentRepository.match(entryYear, program);	
+	}
 }
