@@ -1,10 +1,12 @@
 package br.com.ufabchub.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ufabchub.model.Classroom;
 import br.com.ufabchub.model.Publish;
 import br.com.ufabchub.repository.PublishRepository;
 
@@ -16,12 +18,8 @@ public class PublishService {
 	
 	
 	
-	public Optional<Publish> listByClassroom(Long idClassroom) {
-		return publishr.findById(idClassroom);
-	}
-	
-	public Optional<Publish> listPublish(Long idClassroom) {
-		return publishr.findById(idClassroom);
+	public List<Publish> listByClassroom(Classroom classroom) {
+		return publishr.findAllByClassroom(classroom);
 	}
 	
 	public Iterable<Publish> listAll() {

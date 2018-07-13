@@ -100,7 +100,7 @@ public class ClassroomController {
 	public ModelAndView lobyClassroom(@PathVariable Long id){
 		ModelAndView mv = new ModelAndView("classroomfeed");
 		mv.addObject("classrooms", classrs.getClassroomById(id));
-		mv.addObject("posts",publishsr.listByClassroom(id));
+		mv.addObject("publishes",publishsr.listByClassroom(classrs.getClassroomById(id)));
 		return mv;
 	}
 	
