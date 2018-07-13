@@ -9,6 +9,6 @@ import br.com.ufabchub.model.*;
 
 public interface PublishRepository extends JpaRepository<Publish, Long> {
 
-	@Query("select p from Publish p where p.classroom=(:classroom)")
+	@Query("select p from Publish p where p.classroom=(:classroom) order by p.id desc")
 	public List<Publish> findAllByClassroom(Classroom classroom);
 }

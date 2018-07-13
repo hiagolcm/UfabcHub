@@ -29,12 +29,13 @@ public class PublishController {
 
 	@RequestMapping(value = "/addpost", method = RequestMethod.POST)
 	public String addpost(@RequestParam("classroomId") String classroomId, @RequestParam("post") String postBody,
+	public String addpost(@RequestParam("classroomId") Long classroomId, @RequestParam("post") String postBody,
 			HttpSession session) {
 		Publish post = new Post(postBody, studentService.findById((Long) session.getAttribute("studentid")),
-				classrs.getClassroomById(Long.parseLong(classroomId)));
+				classrs.getClassroomById(classroomId));
 		postsr.save(post);
 
-		String redirect = "redirect:/student/classroom/" + classroomId;
+		String redirect = "redirect:/student/classroom/" + String.valueOf(classroomId);
 		return redirect;
 	}
 

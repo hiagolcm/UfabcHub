@@ -24,7 +24,7 @@
 						<strong th:text="${classrooms.name}"></strong>
 					</tr>
 				</div>
-				<form action="/student/classroom/addpost" method="post">
+				<form action="addpost" method="post">
 
 					<div class="form-group">
 						<tr th:each="classroom : ${classrooms}">
@@ -50,12 +50,13 @@
 								</thead>
 								<tbody>
 									<tr th:each="publish : ${publishes}">
-										<td th:text="${publish.date}"></td>
+										<td><row th:text="${publish.student.name}"> </row><br/> <row
+												th:text="${publish.date}"> </row></td>
 										<td th:text="${publish.body}"></td>
 										<td>
 											<div>
-												<button name="classroomId" class="btn btn-success"
-													type="submit" th:value="${classroom.id}">Acessar
+												<button name="publishId" class="btn btn-success"
+													type="submit" th:value="${publish.id}">Acessar
 													Post</button>
 											</div>
 										</td>
