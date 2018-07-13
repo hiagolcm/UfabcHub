@@ -27,4 +27,8 @@ public class PublishService {
 		publishr.save(post);
 	}
 	
+	public Publish findById(Long id) {
+		return publishr.getById(id);
+	}
+	
 }
