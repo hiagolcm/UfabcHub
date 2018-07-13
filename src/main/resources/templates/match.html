@@ -20,26 +20,26 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>Pessoas que cursam o mesmo que você: </strong>
+					<strong>Pessoas que cursam o mesmo que vocÃª: </strong>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table
 							class="table table-sm table-striped table-hover table-bordered">
 							<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Email</th>
-					</tr>
-				</thead>
-				<tbody>
-				<tr th:each="student : ${students}">
-					<td th:text="${student.name}"></td>
-					<td th:text="${student.email}"></td>
-				
-				</tr>	
-				</tbody>
-								</table>
+								<tr>
+									<th>Nome</th>
+									<th>Email</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="student : ${students}">
+									<td th:text="${student.name}"></td>
+									<td th:text="${student.email}"></td>
+
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
