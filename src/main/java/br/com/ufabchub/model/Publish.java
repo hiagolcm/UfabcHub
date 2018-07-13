@@ -1,7 +1,9 @@
 package br.com.ufabchub.model;
 
+import java.util.Date;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,13 +36,17 @@ public abstract class Publish {
 	@JoinColumn(name = "classroom_id")
 	private Classroom classroom;
 
+	public Publish() {
+		
+	}
+	
 	public Publish(String body, Student student, Classroom classroom) {
 		this.body = body;
 		this.student = student;
 		this.classroom = classroom;
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		this.date = formatter.format(now);
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date today = Calendar.getInstance().getTime();
+		this.date = formatter.format(today);
 		this.upVotes = 0;
 	}
 

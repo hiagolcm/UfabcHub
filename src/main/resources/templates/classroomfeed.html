@@ -18,12 +18,24 @@
 	<div class="container">
 		<div class="jumbotron" align="center">
 
-			<div class="panel panel-default"> 
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<tr th:each="classroom : ${classrooms}">
 						<strong th:text="${classrooms.name}"></strong>
+					</tr>
 				</div>
+				<form action="/student/classroom/addpost" method="post">
 
+					<div class="form-group">
+						<tr th:each="classroom : ${classrooms}">
+							<input class="form-control" type="text" id="post" name="post"
+								placeholder="Escreva aqui seu post:" required />
+							<button name="classroomId" class="btn btn-success" type="submit"
+								th:value="${classroom.id}">Adicionar Publicação</button>
+						</tr>
+					</div>
+
+				</form>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<form action="enter" method="post">
@@ -53,12 +65,11 @@
 						</form>
 					</div>
 				</div>
-				
+
 			</div>
 
 			<div>
 				<a href="/student/classroom" class="btn btn-warning">Voltar</a>
-				<a href="/student/teste/classroom/addpost" class="btn btn-warning">Adicionar Publicação</a>
 			</div>
 
 		</div>

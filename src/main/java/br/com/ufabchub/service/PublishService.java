@@ -15,9 +15,6 @@ public class PublishService {
 	@Autowired
 	PublishRepository publishr;
 	
-	
-	
-	
 	public List<Publish> listByClassroom(Classroom classroom) {
 		return publishr.findAllByClassroom(classroom);
 	}
