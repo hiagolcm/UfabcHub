@@ -41,11 +41,11 @@ public class PublishController {
 		return redirect;
 	}
 	
-	@RequestMapping(value = "/addcomment", method = RequestMethod.POST)
-	public String addcomment(@RequestParam("publishId") Long classroomId, @RequestParam("comment") String commentBody,
-			HttpSession session) {
+	@RequestMapping(value = "/post/addcomment/{id}", method = RequestMethod.POST)
+	public String addcomment(@RequestParam("classroomId") String classroomId, @RequestParam("comment") String commentBody,
+			HttpSession session, @PathVariable Long id) {
 		Publish comment = new Comment(commentBody, studentService.findById((Long) session.getAttribute("studentid")),
-				classrs.getClassroomById(classroomId));
+				classrs.getClassroomById(Long.parseLong(classroomId)), (Post)postsr.findById(id));
 		postsr.save(comment);
 
 		String redirect = "redirect:/student/classroom/" + String.valueOf(classroomId);
