@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ufabchub.model.Classroom;
+import br.com.ufabchub.model.Comment;
 import br.com.ufabchub.model.Publish;
 import br.com.ufabchub.repository.PublishRepository;
 
@@ -29,6 +30,10 @@ public class PublishService {
 	
 	public Publish findById(Long id) {
 		return publishr.getById(id);
+	}
+	
+	public List<Publish> listCommentsByPost(Long id) {
+		return publishr.getCommentsByPost(id);
 	}
 	
 }
