@@ -10,7 +10,8 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet"></link>
-<link rel="stylesheet" type="text/css" href="custom.css">
+<link rel="stylesheet" type="text/css" href="/custom.css">
+<link rel="stylesheet" type="text/css" href="/css/chat.css">
 
 </head>
 <body>
@@ -21,9 +22,34 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<tr th:each="classroom : ${classrooms}">
-						<strong th:text="${classrooms.name}"></strong>
+						<strong id = "classRoomId" class="hidden" th:text="${classroom.id}">
+						</strong>
+						<strong th:text="${classroom.name}"></strong>
 					</tr>
 				</div>
+				<div id="chat-page">
+			        <div class="chat-container">
+			            <div class="chat-header">
+			            	<tr th:each="classroom : ${classrooms}">
+			                	<h2>Chat - <span th:text="${classroom.name}"></span></h2>
+			                </tr>
+			            </div>
+			            <div class="connecting">
+			                Conectando...
+			            </div>
+			            <ul id="messageArea">
+
+			            </ul>
+			            <form id="messageForm" name="messageForm" nameForm="messageForm">
+			                <div class="form-group">
+			                    <div class="input-group clearfix">
+			                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+			                        <button type="submit" class="btn btn-success">Enviar</button>
+			                    </div>
+			                </div>
+			            </form>
+			        </div>
+			    </div>
 				<form action="addpost" method="post">
 
 					<div class="form-group">
@@ -75,10 +101,18 @@
 
 		</div>
 	</div>
-
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+		    var studentName = /*[[${session.studentName}]]*/;
+		/*]]>*/
+		</script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/chat.js"></script>
 
 </body>
 </html>
