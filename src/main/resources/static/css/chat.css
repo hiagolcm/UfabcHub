@@ -38,6 +38,7 @@
     position: fixed;
     bottom: 0px; 
     right: 0px;
+    z-index: 999;
 }
 
 .chat-container {
@@ -136,6 +137,10 @@
     text-align: center;
     padding: 15px;
     border-bottom: 1px solid #ececec;
+}
+
+.chat-body{
+    height:400px;
 }
 
 .chat-header h2 {

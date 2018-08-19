@@ -17,37 +17,37 @@
 <body>
 	<header th:replace="logged :: header-fragment"></header>
 	<div class="container">
+		<div id="chat-page">
+			<div class="chat-container">
+				<div class="chat-header">
+					<h2>
+						Chat - <span th:text="${classroom.name}"></span>
+					</h2>
+				</div>
+				<div class="chat-body">
+					<div class="connecting">Conectando...</div>
+					<ul id="messageArea">
+
+					</ul>
+					<form id="messageForm" name="messageForm" nameForm="messageForm">
+						<div class="form-group">
+							<div class="input-group clearfix">
+								<input type="text" id="message" placeholder="Type a message..."
+									autocomplete="off" class="form-control" />
+								<button type="submit" class="btn btn-success">Enviar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<div class="jumbotron" align="center">
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong id="classRoomId" class="hidden" th:text="${classroom.id}">
 					</strong> <strong th:text="${classroom.name}"></strong>
-				</div>
-				<div id="chat-page">
-
-					<div class="chat-container">
-						<div class="chat-header">
-							<h2>
-								Chat - <span th:text="${classroom.name}"></span>
-							</h2>
-						</div>
-						<div class="chat-body">
-							<div class="connecting">Conectando...</div>
-							<ul id="messageArea">
-
-							</ul>
-							<form id="messageForm" name="messageForm" nameForm="messageForm">
-								<div class="form-group">
-									<div class="input-group clearfix">
-										<input type="text" id="message" placeholder="Type a message..."
-											autocomplete="off" class="form-control" />
-										<button type="submit" class="btn btn-success">Enviar</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
 				</div>
 
 
