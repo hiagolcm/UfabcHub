@@ -18,66 +18,72 @@
 	<header th:replace="logged :: header-fragment"></header>
 
 	<div class="container">
-		<!-- Exibição do Post -->
-		<table class="table table-sm table-striped table-hover table-bordered">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="publish : ${publishes}">
-					<td><row th:text="${publish.student.name}"> </row><br /> <row
-							th:text="${publish.date}"></row></td>
-					<td th:text="${publish.body}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+		<div class="jumbotron" align="center">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong id="classRoomId" class="hidden"
+						th:text="${publish.classroom.id}"> </strong> <strong
+						th:text="${publish.classroom.name}"></strong>
+				</div>
 
-	<!-- Exibição dos Comentários -->
-	<div class="container">
-		<!-- Exibição do Post -->
-		<table class="table table-sm table-striped table-hover table-bordered">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="comment : ${comments}">
-					<td><row th:text="${comment.student.name}"> </row><br /> <row
-							th:text="${comment.date}"></row></td>
-					<td th:text="${comment.body}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+				<!-- Exibição do Post -->
+				<table
+					class="table table-sm table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th class="col-sm-2">Autor</th>
+							<th class="col-sm-8">Publicação</th>
+							<th class="col-sm-1">UpVotes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td><row th:text="${publish.student.name}"> </row><br /> <row
+								th:text="${publish.date}"></row></td>
+						<td th:text="${publish.body}"></td>
+						<td th:text="${publish.upVotes}"></td>
 
-	<div class="container">
+					</tbody>
+				</table>
+
+				<!-- Inserir novo Comentário -->
+				<div class="form-group">
+					<form action="addcomment" method="post">
+						<div class="input-group">
+							<input class="form-control" type="text" id="comment"
+								name="comment" placeholder="Escreva aqui seu comentário:"
+								required />
+
+							<div class="input-group-btn">
+								<button name="publishId" class="btn btn-success" type="submit"
+									th:value="${publish.id}">Comentar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<a th:href="@{/student/classroom/{id}(id=${publish.classroom.id})}"
+					class="btn btn-warning">Voltar</a>
 
 
-
-
-
-
-		<!-- Inserir novo Comentário -->
-		<div class="form-group">
-			<form action="addcomment" method="post">
-				<input class="form-control" type="text" id="comment" name="comment"
-					placeholder="Escreva aqui seu comentário:" required />
-				<tr th:each="publish : ${publishes}">
-					<button name="publishId" class="btn btn-success" type="submit"
-						th:value="${publish.id}">Adicionar Comentário</button>
-				</tr>
-				</tr>
-			</form>
+				<!-- Exibição dos Comentários -->
+				<table
+					class="table table-sm table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th class="col-sm-2">Autor</th>
+							<th class="col-sm-10">Comentário</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="comment : ${comments}">
+							<td><row th:text="${comment.student.name}"> </row><br /> <row
+									th:text="${comment.date}"></row></td>
+							<td th:text="${comment.body}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-
 	</div>
+
 </body>
 </html>

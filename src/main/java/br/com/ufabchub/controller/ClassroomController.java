@@ -90,16 +90,10 @@ public class ClassroomController {
 		return "redirect:/student/classroom";
 	}
 	
-	@RequestMapping(value = "/enter", method = RequestMethod.POST)
-	public String enter(@RequestParam("classroomId") String classroomId, HttpSession session) {
-		String redirect = "redirect:/student/classroom/" + classroomId; 
-		return redirect;
-	}
-	
 	@RequestMapping("/classroom/{id}")
 	public ModelAndView lobyClassroom(@PathVariable Long id){
 		ModelAndView mv = new ModelAndView("classroomfeed") ;
-		mv.addObject("classrooms", classrs.getClassroomById(id));
+		mv.addObject("classroom", classrs.getClassroomById(id));
 		mv.addObject("publishes",publishsr.listByClassroom(classrs.getClassroomById(id)));
 		return mv;
 	}

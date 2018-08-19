@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.ufabchub.model.Comment;
 import br.com.ufabchub.model.Post;
 import br.com.ufabchub.model.Publish;
+import br.com.ufabchub.model.Student;
 import br.com.ufabchub.service.ClassroomService;
 import br.com.ufabchub.service.PublishService;
 import br.com.ufabchub.service.StudentService;
@@ -51,18 +52,50 @@ public class PublishController {
 		String redirect = "redirect:/student/classroom/post/" + publishId;
 		return redirect;
 	}
-		
-	@RequestMapping(value = "/enter", method = RequestMethod.POST)
-	public String enter(@RequestParam("publishId") String postid) {
-		String redirect = "redirect:/student/classroom/post/" + postid; 
-		return redirect;
-	}
 	
 	@RequestMapping(value = "/post/{id}")
 	public ModelAndView lobyPost(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView("postdiscuss");
-		mv.addObject("publishes",postsr.findById(id));	
+		mv.addObject("publish",postsr.findById(id));	
 		mv.addObject("comments",postsr.listCommentsByPost(id));
 		return mv;
+	}
+	
+	@RequestMapping(value = "/upvote/{postId}")
+	public String upVotePost(@PathVariable Long postId, HttpSession session) {
+
+		Long classroomId = postsr.findById(postId).getClassroom().getId();
+		Long studentId = (Long) session.getAttribute("studentid");
+		Student student = studentService.findById(studentId);
+		Publish post = postsr.findById(postId);
+
+		if (!student.getUpVotedPublishes().contains(post)) {
+			student.getUpVotedPublishes().add(post);
+			studentService.save(student);
+			
+			post.setUpVotes(post.getUpVotes()+1);
+			postsr.save(post);
+		}
+
+		return "redirect:/student/classroom/"+classroomId;
+	}
+	
+	@RequestMapping(value = "/downvote/{postId}")
+	public String downVotePost(@PathVariable Long postId, HttpSession session) {
+
+		Long classroomId = postsr.findById(postId).getClassroom().getId();
+		Long studentId = (Long) session.getAttribute("studentid");
+		Student student = studentService.findById(studentId);
+		Publish post = postsr.findById(postId);
+
+		if (!student.getUpVotedPublishes().contains(post)) {
+			student.getUpVotedPublishes().add(post);
+			studentService.save(student);
+			
+			post.setUpVotes(post.getUpVotes()-1);
+			postsr.save(post);
+		}
+
+		return "redirect:/student/classroom/"+classroomId;
 	}
 }

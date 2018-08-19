@@ -42,16 +42,24 @@ public class Student {
 	private String password;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "student_classroom", joinColumns = @JoinColumn(name = "sutendt_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"))
+	@JoinTable(name = "student_classroom", 
+				joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"), 
+				inverseJoinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"))
 	private List<Classroom> classrooms;
-	
+
 	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
 	private List<Publish> publishes;
-	
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "student_upVotedPublishes", 
+				joinColumns = {@JoinColumn(name = "student_id")}, 
+				inverseJoinColumns = {@JoinColumn(name = "upVotedPublish_id")})
+	private List<Publish> upVotedPublishes;
+
 	public Student() {
-		
+
 	}
-	
+
 	public Student(String ra, String name, int age, int entryYear, String program, String email, String password) {
 		super();
 		this.ra = ra;
@@ -64,7 +72,14 @@ public class Student {
 		this.classrooms = null;
 	}
 
-	
+	public List<Publish> getUpVotedPublishes() {
+		return upVotedPublishes;
+	}
+
+	public void setUpVotedPublishes(List<Publish> upVotedPublishes) {
+		this.upVotedPublishes = upVotedPublishes;
+	}
+
 	public List<Publish> getPublishes() {
 		return publishes;
 	}
@@ -120,7 +135,7 @@ public class Student {
 	public void setEntryYear(int entryYear) {
 		this.entryYear = entryYear;
 	}
-	
+
 	public String getprogram() {
 		return program;
 	}

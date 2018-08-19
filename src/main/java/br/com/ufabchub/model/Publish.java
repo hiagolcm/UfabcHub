@@ -1,15 +1,19 @@
 package br.com.ufabchub.model;
 
 import java.util.Date;
+import java.util.List;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -31,6 +35,9 @@ public abstract class Publish {
 	@ManyToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "upVotedPublishes", cascade = CascadeType.ALL)
+	private List<Student> students;
 
 	@ManyToOne
 	@JoinColumn(name = "classroom_id")
@@ -48,6 +55,14 @@ public abstract class Publish {
 		Date today = Calendar.getInstance().getTime();
 		this.date = formatter.format(today);
 		this.upVotes = 0;
+	}
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	public Student getStudent() {

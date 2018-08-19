@@ -21,87 +21,88 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<tr th:each="classroom : ${classrooms}">
-						<strong id = "classRoomId" class="hidden" th:text="${classroom.id}">
-						</strong>
-						<strong th:text="${classroom.name}"></strong>
-					</tr>
+					<strong id="classRoomId" class="hidden" th:text="${classroom.id}">
+					</strong> <strong th:text="${classroom.name}"></strong>
 				</div>
 				<div id="chat-page">
-			        <div class="chat-container">
-			            <div class="chat-header">
-			            	<tr th:each="classroom : ${classrooms}">
-			                	<h2>Chat - <span th:text="${classroom.name}"></span></h2>
-			                </tr>
-			            </div>
-			            <div class="connecting">
-			                Conectando...
-			            </div>
-			            <ul id="messageArea">
+					<div class="chat-container">
+						<div class="chat-header">
+							<h2>
+								Chat - <span th:text="${classroom.name}"></span>
+							</h2>
+						</div>
+						<div class="connecting">Conectando...</div>
+						<ul id="messageArea">
 
-			            </ul>
-			            <form id="messageForm" name="messageForm" nameForm="messageForm">
-			                <div class="form-group">
-			                    <div class="input-group clearfix">
-			                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-			                        <button type="submit" class="btn btn-success">Enviar</button>
-			                    </div>
-			                </div>
-			            </form>
-			        </div>
-			    </div>
-				<form action="addpost" method="post">
-
-					<div class="form-group">
-						<tr th:each="classroom : ${classrooms}">
-							<input class="form-control" type="text" id="post" name="post"
-								placeholder="Escreva aqui seu post:" required />
-							<button name="classroomId" class="btn btn-success" type="submit"
-								th:value="${classroom.id}">Adicionar Publicação</button>
-						</tr>
-					</div>
-
-				</form>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<form action="enter" method="post">
-							<table
-								class="table table-sm table-striped table-hover table-bordered">
-								<thead>
-									<tr>
-										<th></th>
-										<th></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="publish : ${publishes}">
-										<td><row th:text="${publish.student.name}"> </row><br/> <row
-												th:text="${publish.date}"> </row></td>
-										<td th:text="${publish.body}"></td>
-										<td>
-											<div>
-												<button name="publishId" class="btn btn-success"
-													type="submit" th:value="${publish.id}">Acessar Post
-												</button>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						</ul>
+						<form id="messageForm" name="messageForm" nameForm="messageForm">
+							<div class="form-group">
+								<div class="input-group clearfix">
+									<input type="text" id="message" placeholder="Type a message..."
+										autocomplete="off" class="form-control" />
+									<button type="submit" class="btn btn-success">Enviar</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
 
-			</div>
 
-			<div>
-				<a href="/student/classroom" class="btn btn-warning">Voltar</a>
-			</div>
+				<div class="form-group">
+					<form action="addpost" method="post">
+						<div class="input-group">
+							<input class="form-control" type="text" id="post" name="post"
+								placeholder="Escreva aqui seu post:" required />
 
+							<div class="input-group-btn">
+								<button name="classroomId" class="btn btn-success" type="submit"
+									th:value="${classroom.id}">Publicar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div>
+					<a href="/student/classroom" class="btn btn-warning">Voltar</a>
+				</div>
+
+				<div class="panel-body">
+					<div class="table-responsive">
+
+						<table
+							class="table table-sm table-striped table-hover table-bordered table-responsive">
+							<thead>
+								<tr>
+									<th class="col-sm-2">Autor</th>
+									<th class="col-sm-8">Publicação</th>
+									<th class="col-sm-1">UpVotes</th>
+									<th class="col-sm-1"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="publish : ${publishes}">
+									<td><row th:text="${publish.student.name}"> </row><br />
+										<row th:text="${publish.date}"> </row></td>
+									<td th:text="${publish.body}"></td>
+									<td th:text="${publish.upVotes}"></td>
+									<td><a th:href="@{post/{id}(id=${publish.id})}"
+										class="btn btn-success">Acessar</a> <br /> <a
+										th:href="@{upvote/{id}(id=${publish.id})}"
+										class="btn btn-primary">UpVote</a> <br /> <a
+										th:href="@{downvote/{id}(id=${publish.id})}"
+										class="btn btn-danger">DownVote</a></td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
-		<script th:inline="javascript">
+	<script th:inline="javascript">
 		/*<![CDATA[*/
 		    var studentName = /*[[${session.studentName}]]*/;
 		/*]]>*/
@@ -110,9 +111,11 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    <script src="/js/chat.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script src="/js/chat.js"></script>
 
 </body>
 </html>
