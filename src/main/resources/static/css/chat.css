@@ -38,7 +38,6 @@
     position: fixed;
     bottom: 0px; 
     right: 0px;
-    height: 50%;
 }
 
 .chat-container {
@@ -98,7 +97,6 @@
 #chat-page .chat-message i {
     position: absolute;
     width: 42px;
-    height: 42px;
     overflow: hidden;
     left: 10px;
     display: inline-block;
@@ -134,6 +132,7 @@
 }
 
 .chat-header {
+    cursor:pointer;
     text-align: center;
     padding: 15px;
     border-bottom: 1px solid #ececec;

@@ -25,25 +25,28 @@
 					</strong> <strong th:text="${classroom.name}"></strong>
 				</div>
 				<div id="chat-page">
+
 					<div class="chat-container">
 						<div class="chat-header">
 							<h2>
 								Chat - <span th:text="${classroom.name}"></span>
 							</h2>
 						</div>
-						<div class="connecting">Conectando...</div>
-						<ul id="messageArea">
+						<div class="chat-body">
+							<div class="connecting">Conectando...</div>
+							<ul id="messageArea">
 
-						</ul>
-						<form id="messageForm" name="messageForm" nameForm="messageForm">
-							<div class="form-group">
-								<div class="input-group clearfix">
-									<input type="text" id="message" placeholder="Type a message..."
-										autocomplete="off" class="form-control" />
-									<button type="submit" class="btn btn-success">Enviar</button>
+							</ul>
+							<form id="messageForm" name="messageForm" nameForm="messageForm">
+								<div class="form-group">
+									<div class="input-group clearfix">
+										<input type="text" id="message" placeholder="Type a message..."
+											autocomplete="off" class="form-control" />
+										<button type="submit" class="btn btn-success">Enviar</button>
+									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 

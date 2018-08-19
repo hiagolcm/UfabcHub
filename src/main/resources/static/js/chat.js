@@ -110,3 +110,9 @@ function getAvatarColor(messageSender) {
 
 connect();
 messageForm.addEventListener('submit', sendMessage, true)
+
+
+//slide chat
+$(".chat-header").click(function(){
+    $(".chat-body").slideToggle();
+})
