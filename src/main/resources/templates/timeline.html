@@ -7,6 +7,15 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="ajax.js"></script>
+
+<script>
+	type = "text/javascript"
+	language = "javascript"
+	src = "js/jquery.js">
+</script>
+
 <style>
 .testimonial-group>.row {
 	overflow-x: auto;
@@ -24,9 +33,9 @@
 	font-size: 12px;
 	padding-bottom: 20px;
 	padding-top: 18px;
-	text-align:justify;	
-	text-indent:15px;	
-	width:250px;
+	text-align: justify;
+	text-indent: 15px;
+	width: 250px;
 }
 
 .col-xs-4:nth-child(3n+1) {
@@ -41,46 +50,72 @@
 	background: #69c;
 }
 
-.section-title {
-	overflow: scroll;
-	overflow-x: scroll;
-	overflow-y: hidden
-}
-
 .texto {
-	width:200px;
+	width: 200px;
 }
-
 </style>
+
 
 </head>
 <body>
 	<header th:replace="logged :: header-fragment"></header>
 	<div class="container">
-		<div class="jumbotron" align="center" style="margin-top: 50px;">
+		<div class="container" align="center" style="margin-top: 20px;">
 			<h1>
 				Seja bem vindo <span th:text="${session.studentName}"></span>
 			</h1>
 		</div>
 	</div>
-	
-	<div class="container testimonial-group">
-	<h2>Turmas que você acompanha</h2>
-		<div class="row text-center">
-			<tr th:each="classroom : ${classrooms}">
-				<div class="col-xs-4"><div class="container"><td class=".texto" th:text="${classroom.name}"></td></div></div>
-			</tr>
-		</div>
-	</div>
-	
+
 	<div class="container">
-	<h3>Atividades Recentes da turma</h3>
-	
-	</div>
+		<h2>Acompanhe suas publicações</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Data</th>
+					<th>Turma</th>
+					<th>Corpo</th>
+					<th>Votes</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="publish : ${publishes}">
+					<td th:text="${publish.date}"></td>
+					<td th:text="${publish.classroom.name}"></td>
+					<td th:text="${publish.body}"></td>
+					<td th:text="${publish.upVotes}"></td>
+					<td><a
+						th:href="@{student/classroom/post/{id}(id=${publish.id})}"
+						class="btn btn-success">Acessar</a></td>
+				</tr>
+			</tbody>
+		</table>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- MICHELE, AQUI É A PARTE DOS MAIS VOTADOS
+		<div class="container">
+			<h2>Posts mais votados</h2>
+			<tr th:each="classroom : ${classrooms}">
+				<button name="classroomId" class="btn btn-success" type="submit"
+					th:value="${classroom.id}" th:text="${classroom.name}"></button>
+			</tr>
+			<table border="1" width="500">
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Sala</th>
+						<th>Corpo</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+ -->
 
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
