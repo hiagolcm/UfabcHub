@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.ufabchub.model.Classroom;
 import br.com.ufabchub.model.Comment;
 import br.com.ufabchub.model.Publish;
+import br.com.ufabchub.model.Student;
 import br.com.ufabchub.repository.PublishRepository;
 
 @Service
@@ -18,6 +19,10 @@ public class PublishService {
 	
 	public List<Publish> listByClassroom(Classroom classroom) {
 		return publishr.findAllByClassroom(classroom);
+	}
+	
+	public List<Publish> listByStudent(Long idstudent) {
+		return publishr.findAllByStudent(idstudent);
 	}
 	
 	public Iterable<Publish> listAll() {
