@@ -2,22 +2,50 @@ package br.com.ufabchub.model;
 
 import java.util.Date;
 
-import br.com.ufabchub.util.MessageType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.com.ufabchub.util.MessageType;
+import br.com.ufabchub.view.APIView;
+
+@Entity
 public class ChatMessage {
 
-	Long classRoomId;
+	@Id
+	@GeneratedValue
+	Long Id;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "message_classroom")
+	Classroom classroom;
+	@JsonView(APIView.MessageLoaderView.class)
 	MessageType type;
+	@JsonView(APIView.MessageLoaderView.class)
 	String content;
+	@JsonView(APIView.MessageLoaderView.class)
 	String sender;
 	Date date;
 
-	public Long getClassRoomId() {
-		return classRoomId;
+	public Long getId() {
+		return Id;
 	}
 
-	public void setClassRoomId(Long classRoomId) {
-		this.classRoomId = classRoomId;
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public Classroom getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
 	}
 
 	public MessageType getType() {
