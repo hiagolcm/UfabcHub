@@ -1,3 +1,4 @@
+
 .sortable thead tr th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -5,6 +6,7 @@
     color: #333333;
     text-align: center;
     text-transform: uppercase;
+	cursor: pointer;
 }
 
 table {

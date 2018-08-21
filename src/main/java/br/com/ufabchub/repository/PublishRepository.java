@@ -21,10 +21,12 @@ public interface PublishRepository extends JpaRepository<Publish, Long> {
 	@Query("select p from Publish p where p.post.id=(:id)")
 	public List<Publish> getCommentsByPost(Long id);
 	
-//	@Query("select p from Publish where p.classroom(:classroom) order by p.upvotes desc")
-//	public List<Publish> getMostUpVoted(Classroom classroom);
+//	@Query("select p from Publish where p.classroom=(:classroom) order by p.upvotes desc")
+//	public List<Publish> getMostUpVoted(Student classroom);
 //	
 //	@Query("select p from Publish order by p.upVotes desc")
 //	public List<Publish> getMostUpVoted();
+	
+	
 	
 }
