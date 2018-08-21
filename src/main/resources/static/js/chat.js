@@ -16,7 +16,7 @@ var colors = [
 ];
 
 function loadMessages(){
-    var url = "http://localhost:8080/chat/"+classRoomId;
+    var url = window.location.hostname+"/"+classRoomId;
     $.getJSON(url).done(function(data){
         data.forEach(function(element){
             addMessage(element)            
