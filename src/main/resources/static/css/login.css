@@ -1,0 +1,7 @@
+.login-logo {
+    width: 340px;
+    height: 120px;
+    background-image: url(../images/loginlogo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
