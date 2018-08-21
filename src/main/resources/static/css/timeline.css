@@ -1,0 +1,31 @@
+* {
+	font-family: 'Ubuntu', sans-serif;	
+}
+
+.sortable thead tr th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #5cb85c;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sortable tbody tr td {
+    border-bottom: 1px solid #e2e2e2;
+    text-align: center;
+    padding: 2px;
+}
+
+.bem-vindo {
+    font-size: 17px;
+    top: 0px;
+    position: absolute;
+    right: 30px;
+    text-transform: capitalize;
+}

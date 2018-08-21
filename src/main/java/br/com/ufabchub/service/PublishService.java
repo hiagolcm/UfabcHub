@@ -21,8 +21,8 @@ public class PublishService {
 		return publishr.findAllByClassroom(classroom);
 	}
 	
-	public List<Publish> listByStudent(Long idstudent) {
-		return publishr.findAllByStudent(idstudent);
+	public List<Publish> listByStudent(Student student) {
+		return publishr.findAllByStudent(student);
 	}
 	
 	public Iterable<Publish> listAll() {
@@ -41,4 +41,8 @@ public class PublishService {
 		return publishr.getCommentsByPost(id);
 	}
 	
+//	public List<Publish> listMostVoted(Classroom classroom) {
+//		return publishr.getMostUpVoted(classroom);
+//	}
+//	
 }
