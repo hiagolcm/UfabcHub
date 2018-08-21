@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>UFABC Hub</title>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/classroomfeed.css">
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
@@ -12,7 +13,7 @@
 	rel="stylesheet"></link>
 <link rel="stylesheet" type="text/css" href="/custom.css">
 <link rel="stylesheet" type="text/css" href="/css/chat.css">
-
+<link rel="stylesheet" type="text/css" href="/css/background.css">
 </head>
 <body>
 	<header th:replace="logged :: header-fragment"></header>
@@ -89,11 +90,11 @@
 									<td th:text="${publish.body}"></td>
 									<td th:text="${publish.upVotes}"></td>
 									<td><a th:href="@{post/{id}(id=${publish.id})}"
-										class="btn btn-success">Acessar</a> <br /> <a
-										th:href="@{upvote/{id}(id=${publish.id})}"
-										class="btn btn-primary">UpVote</a> <br /> <a
-										th:href="@{downvote/{id}(id=${publish.id})}"
-										class="btn btn-danger">DownVote</a></td>
+										class="btn btn-success btn-first"><p>Acessar</p></a>  
+										<a th:href="@{upvote/{id}(id=${publish.id})}"
+										class="btn btn-primary btn-up"></a>  
+										<a th:href="@{downvote/{id}(id=${publish.id})}"
+										class="btn btn-danger btn-down"></a></td>
 
 								</tr>
 							</tbody>

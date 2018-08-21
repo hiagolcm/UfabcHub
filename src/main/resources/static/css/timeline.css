@@ -1,12 +1,8 @@
-* {
-	font-family: 'Ubuntu', sans-serif;	
-}
-
 .sortable thead tr th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #5cb85c;
-    color: white;
+    background-color: #eea236;
+    color: #333333;
     text-align: center;
     text-transform: uppercase;
 }
@@ -28,4 +24,20 @@ table {
     position: absolute;
     right: 30px;
     text-transform: capitalize;
+}
+
+body {
+    background-color: #e4d7a0;
+}
+
+tbody {
+    background-color: #f8f8f8;
+}
+
+.container h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
 }

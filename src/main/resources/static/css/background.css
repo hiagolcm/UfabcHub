@@ -1,0 +1,12 @@
+* {
+	font-family: 'Ubuntu', sans-serif;	
+}
+
+
+body {
+    background-image: url(../images/bg.jpg) !important;
+}
+
+tbody {
+    background-color: #f8f8f8;
+}

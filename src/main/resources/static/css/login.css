@@ -5,3 +5,16 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.login-logo h1 {
+	display: none;
+}
+
+body {
+	background-image: url(../images/loginbg.jpg);
+	background-position: center;
+}
+
+.form-container {
+   	background-color: #f8f8f8;
+}

@@ -1,0 +1,47 @@
+.table-responsive tbody tr td a.btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #f0ad4e;
+    border: unset;
+}
+
+.table-responsive tbody tr td a.btn-first {
+    width: 63px;
+    margin-bottom: 2px;
+    background-color: #398439;
+}
+
+.table-responsive tbody tr td a.btn-up {
+	background-image: url(../images/icons/upvotewhite.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.table-responsive tbody tr td a.btn-up:hover {
+	background-image: url(../images/icons/upvotegreen.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #f0ad4e;
+}
+
+.table-responsive tbody tr td a.btn-down {
+    background-image: url(../images/icons/downvotewhite.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	transform: scaleX(-1);
+}
+
+.table-responsive tbody tr td a.btn-down:hover {
+    background-image: url(../images/icons/downvotered.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #f0ad4e;
+	transform: scaleX(-1);
+}
+
+.table-responsive tbody tr td a p {
+    font-size: 15px;
+    margin-left: -9px;
+    margin-top: -3px;
+}

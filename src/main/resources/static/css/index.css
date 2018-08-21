@@ -1,0 +1,40 @@
+body {
+    background: url(../images/indexbg.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.index-container h1 {
+	display: none;
+}
+
+.index-container a {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 32px;
+    text-shadow: 1px 1px #000000;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #ffce0b;
+    border-color: #f9cf06;
+    width: 500px;
+    height: 50px;
+    transition: all ease 1s;
+}
+
+.btn-primary:hover {
+    color: #fed205;
+    background-color: #0e5a3c;
+    border-color: #0e5a3c;
+}
+
+.btn-primary:active {
+    color: #fed205;
+    background-color: #0e5a3c;
+    border-color: #0e5a3c;
+}
