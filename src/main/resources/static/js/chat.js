@@ -15,6 +15,15 @@ var colors = [
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
 
+function loadMessages(){
+    var url = "http://localhost:8080/chat/"+classRoomId;
+    $.getJSON(url).done(function(data){
+        data.forEach(function(element){
+            addMessage(element)            
+        })
+    })
+}
+
 function connect() {
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
@@ -24,10 +33,10 @@ function connect() {
 
 
 function onConnected() {
-    // Subscribe to the Public Topic
+    loadMessages()
+
     stompClient.subscribe('/room/'+classRoomId, onMessageReceived);
 
-    // Tell your username to the server
     stompClient.send("/app/chat.addUser/"+classRoomId,
         {},
         JSON.stringify({sender:studentName,type: 'JOIN'})
@@ -59,10 +68,12 @@ function sendMessage(event) {
     event.preventDefault();
 }
 
+function onMessageReceived(payload){
+    var message = JSON.parse(payload.body)
+    addMessage(message)
+}
 
-function onMessageReceived(payload) {
-    var message = JSON.parse(payload.body);
-
+function addMessage(message) {
     var messageElement = document.createElement('li');
 
     if(message.type === 'JOIN') {
